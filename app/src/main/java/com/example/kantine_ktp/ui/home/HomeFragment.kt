@@ -46,7 +46,7 @@ class HomeFragment : Fragment(), HomeAdapter.ItemAdapterCallback, HomeContract.V
         super.onActivityCreated(savedInstanceState)
 
         initView()
-        presenter = HomePresenter(this)
+        presenter = com.example.kantine_ktp.ui.home.HomePresenter(this)
         presenter.getHome()
 //        initDataDummy()
     }
@@ -90,22 +90,22 @@ class HomeFragment : Fragment(), HomeAdapter.ItemAdapterCallback, HomeContract.V
             var items:List<String> = homeResponse.data[a].types?.split(",") ?: ArrayList()
             for (x in items.indices) {
                 if (items[x].equals("new_food", true)) {
-                    newStateList?.replaceAll(homeResponse.data[a])
+                    newStateList?.add(homeResponse.data[a])
                 } else if (items[x].equals("recommended", true)) {
-                    recomendedList?.replaceAll(homeResponse.data[a])
+                    recomendedList?.add(homeResponse.data[a])
                 } else if (items[x].equals("popular", true)) {
-                    popularList?.replaceAll(homeResponse.data[a])
+                    popularList?.add(homeResponse.data[a])
                 }
             }
 
         }
 
-        val  adapter = HomeAdapter(homeResponse.data, this)
+        val  adapter = com.example.kantine_ktp.ui.home.HomeAdapter(homeResponse.data, this)
         val layoutManager:RecyclerView.LayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rcList.layoutManager = layoutManager
         rcList.adapter = adapter
 
-        val sectionPagerAdapter = SectionPagerAdapter(
+        val sectionPagerAdapter = com.example.kantine_ktp.ui.home.SectionPagerAdapter(
             childFragmentManager
         )
         sectionPagerAdapter.setData(newStateList, popularList, recomendedList)

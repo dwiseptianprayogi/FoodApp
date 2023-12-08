@@ -34,7 +34,7 @@ class SignupAddressFragment : Fragment(), SignupContract.View {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        presenter = SignupPresenter(this)
+        presenter = com.example.kantine_ktp.ui.auth.signup.SignupPresenter(this)
         data = arguments?.getParcelable<RegisterRequest>("data")!!
 
         initDummy()

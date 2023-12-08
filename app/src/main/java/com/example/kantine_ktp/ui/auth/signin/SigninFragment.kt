@@ -32,7 +32,7 @@ class SigninFragment : Fragment(), SigninContract.View {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        presenter = SigninPresenter(this)
+        presenter = com.example.kantine_ktp.ui.auth.signin.SigninPresenter(this)
 
         if (!ektp.getApp().getToken().isNullOrEmpty()){
             val home = Intent(activity, MainActivity::class.java)

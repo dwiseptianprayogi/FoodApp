@@ -47,6 +47,7 @@ android {
             buildConfigField "String", "BASE_URL", "\"http://foodmarket.dwisedap.my.id/\""
         }
     }
+    namespace 'com.example.kantine_ktp'
 
 }
 
